@@ -86,3 +86,23 @@ combos2 = [
         "price": 10,
     }
 ]
+
+meal_dist_by_id = {
+    meal["id"]: meal
+    for meal in meals
+}
+
+meal_dist_by_name = {
+    meal["name"]: meal
+    for meal in meals
+}
+
+combo_dist_by_id = {
+    combo["id"]: combo
+    for combo in combos2
+}
+
+combo_dist_by_name = {
+    combo["name"]: combo
+    for combo in combos2
+}
