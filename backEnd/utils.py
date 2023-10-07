@@ -65,13 +65,31 @@ def comp_cal_counter2(*list_of_items):
                     total_calories += meal_dist_by_id[combo_item]['calories']
 
         except KeyError:
-            print(f"Item '{item}' not found 2")
+            print(f"Item '{item}' not found")
 
-    # for item in list_of_items:
-    #     try:
-    #         for meal in meal_dist:
-    #             if item in meal:
-    #                 total_calories += meal_dist[item]['calories']
-    #     except KeyError:
-    #         print(f"Item {item} not found")
     return total_calories
+
+
+def price_counter(*list_of_items):
+
+    sum_price = 0
+    combo_price = 0
+    for item in list_of_items:
+        try:
+            if item in meal_dist_by_id:
+                sum_price += meal_dist_by_id[item]['price']
+            elif item in meal_dist_by_name:
+                sum_price += meal_dist_by_name[item]['price']
+            elif item in combo_dist_by_id:
+                combo_price += combo_dist_by_id[item]['price']
+                for combo_item in combo_dist_by_id[item]['meals']:
+                    sum_price += meal_dist_by_id[combo_item]['price']
+            else:
+                combo_price += combo_dist_by_name[item]['price']
+                for combo_item in combo_dist_by_name[item]['meals']:
+                    sum_price += meal_dist_by_id[combo_item]['price']
+
+        except KeyError:
+            print(f"Item '{item}' not found")
+
+    return print(f"Combo price: {combo_price} €, Total if you buy individualy: {sum_price} €, Your savings: {sum_price - combo_price} €")
