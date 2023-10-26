@@ -1,6 +1,8 @@
 from unittest import TestCase
+
 from backEnd.utils import calories_counter, comp_cal_counter, comp_cal_counter2, price_counter
 from backEnd.exceptions import BigMealException
+
 # import backEnd.constants as constants
 
 import backEnd.classes as classes
