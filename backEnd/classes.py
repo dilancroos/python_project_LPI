@@ -3,6 +3,13 @@ import json
 with open("data/meals.json") as file:
     meals = json.load(file)
 
+# Complete the `Order` class
+# in a dedicated file,
+# it must respect the
+# information given in the
+# docstring.
+
+# An order can be refused if the total is more than 2000 calories or if an unknown item is ordered.
 
 class Order:
     """
@@ -28,5 +35,67 @@ class Order:
     """
     counter = 0
 
-    def __init__(self, items, date=None):
-        pass
+    def __init__(
+        self,
+        items,
+        date=None
+    ):
+        self.items = items
+        self.date = date
+        self.order_id = f"order-{Order.counter}"
+        Order.counter += 1
+        self.order_accepted = None
+        self.order_refused_reason = None
+
+    @property
+    def calories(self):
+        total_calories = 0
+        for item in self.items:
+            for meal in meals:
+                try:
+                    if item == meal['id']:
+                        total_calories += meal['calories']
+                    elif item == meal['name']:
+                        total_calories += meal['calories']
+
+                    return total_calories
+                except KeyError:
+                    print(f"Item '{item}' not found")
+
+    @property
+    def price(self):
+        total_price = 0
+        for item in self.items:
+            try:
+                for meal in meals:
+                    if item == meal['id']:
+                        total_price += meal['price']
+                    elif item == meal['name']:
+                        total_price += meal['price']
+                return total_price
+            except KeyError:
+                print(f"Item '{item}' not found")
+
+    def __repr__(self):
+        return f"Order(items={self.items}, date={self.date})"
+
+    def __str__(self):
+        return f"Order {self.order_id} made on {self.date} with items {self.items}."
+
+    def accept_order(self):
+        if self.calories > 2000:
+            self.order_accepted = False
+            self.order_refused_reason = "Too many calories."
+        else:
+            self.order_accepted = True
+            self.order_refused_reason = None
+
+    def print_order(self):
+        print(
+            f"Order {self.order_id} made on {self.date} with items {self.items}.")
+        print(f"Total calories: {self.calories}")
+        print(f"Total price: {self.price}")
+        if self.order_accepted:
+            print("Order accepted.")
+        else:
+            print(f"Order refused: {self.order_refused_reason}")

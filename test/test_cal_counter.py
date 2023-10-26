@@ -1,8 +1,17 @@
 from unittest import TestCase
-from backEnd.utils import calories_counter
-# from backEnd.constants import calories, combos  
+# import backEnd.utils as utils
+# import backEnd.constants as constants
 
-class CalCounterTestCase(TestCase):
-    def individual_items(self):
-        oneItem = ['Hamburger']
-        assert calories_counter(oneItem) == '600'
+import backEnd.classes as classes
+
+
+class OrderMaking(TestCase):
+    def count_cals(self):
+        order = Order(['Hamburger'])
+        assert order.calories == 600
+
+
+# class CalCounterTestCase(TestCase):
+#     def individual_items(self):
+#         oneItem = ['Hamburger']
+#         assert calories_counter(oneItem) == '600'
