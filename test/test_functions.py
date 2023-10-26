@@ -113,6 +113,8 @@ class calories_counterTestCase(TestCase):
         result = comp_cal_counter2('hamburger', 'veggie combo', 'Unknown')
         self.assertEqual(result, 1300, f"Expected 1300, got {result}")
 
+class price_counterTestCase(TestCase):
+    
     def test_price_complex_id(self):
         result = price_counter('meal-1', 'meal-2', 'meal-3')
         self.assertEqual(result, 18, f"Expected 18, got {result}")
