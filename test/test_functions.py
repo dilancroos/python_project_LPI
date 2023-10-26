@@ -1,95 +1,157 @@
 from unittest import TestCase
-# import backEnd.utils as utils
+from backEnd.utils import calories_counter, comp_cal_counter, comp_cal_counter2, price_counter
+from backEnd.exceptions import BigMealException
 # import backEnd.constants as constants
 
 import backEnd.classes as classes
 
 class calories_counterTestCase(TestCase):
     def test_calaries_simple(self):
-        pass
+        result = calories_counter('Hamburger','Salad','Iced Tea')
+        self.assertEqual(result, 685, f"Expected 685, got {result}") 
 
     def test_calaries_simple_unknown(self):
-        pass
+        result = calories_counter('Hamburger','Salad','Iced Tea', 'Unknown')
+        self.assertEqual(result, 685, f"Expected 685, got {result}")
 
     def test_calaries_combo(self):
-        pass
+        result = calories_counter('Cheesy Combo')
+        self.assertEqual(result, 1070, f"Expected 1070, got {result}")
 
     def test_calaries_combo_unknown(self):
-        pass
+        result = calories_counter('Cheesy Combo', 'Unknown')
+        self.assertEqual(result, 1070, f"Expected 1070, got {result}")
 
     def test_mix(self):
-        pass
+        result = calories_counter('Hamburger', 'Cheesy Combo')
+        self.assertEqual(result, 1670, f"Expected 1670, got {result}")
 
     def test_mix_unknown(self):
-        pass
+        result = calories_counter('Hamburger', 'Cheesy Combo', 'Unknown')
+        self.assertEqual(result, 1670, f"Expected 1670, got {result}")
 
     def test_calaries_complex_id(self):
-        pass
+        result = comp_cal_counter('meal-1', 'meal-2', 'meal-3')
+        self.assertEqual(result, 1750, f"Expected 1750, got {result}")
 
     def test_calaries_complex_id_unknown(self):
-        pass
+        result = comp_cal_counter('meal-1', 'meal-2', 'meal-3', 'Unknown')
+        self.assertEqual(result, 1750, f"Expected 1750, got {result}")
 
     def test_calaries_complex_name(self):
-        pass
+        result = comp_cal_counter('hamburger','salad','iced tea')
+        self.assertEqual(result, 685, f"Expected 685, got {result}")
 
     def test_calaries_complex_name_unknown(self):
-        pass
+        result = comp_cal_counter('hamburger','salad','iced tea', 'Unknown')
+        self.assertEqual(result, 685, f"Expected 685, got {result}")
+
+    # Complex loop through method
+
+    def test_calaries_combo_complex_id2(self):
+        result = comp_cal_counter('combo-1', 'combo-2')
+        self.assertEqual(result, 1770, f"Expected 1770, got {result}")
+
+    def test_calaries_combo_complex_id_unknown2(self):
+        result = comp_cal_counter('combo-1', 'combo-2', 'Unknown')
+        self.assertEqual(result, 1770, f"Expected 1770, got {result}")
+
+    def test_calaries_combo_complex_name2(self):
+        result = comp_cal_counter('cheesy combo', 'veggie combo')
+        self.assertEqual(result, 1770, f"Expected 1770, got {result}")
+
+    def test_calaries_combo_complex_name_unknown2(self):
+        result = comp_cal_counter('cheesy combo', 'veggie combo', 'Unknown')
+        self.assertEqual(result, 1770, f"Expected 1770, got {result}")
+
+    def test_calaries_complex_mix_id2(self):
+        result = comp_cal_counter('meal-1', 'combo-2')
+        self.assertEqual(result, 1300, f"Expected 1300, got {result}")
+
+    def test_calaries_complex_mix_id_unknown2(self):
+        result = comp_cal_counter('meal-1', 'combo-2', 'Unknown')
+        self.assertEqual(result, 1300, f"Expected 1300, got {result}")
+
+    def test_calaries_complex_mix_name2(self):
+        result = comp_cal_counter('hamburger', 'veggie combo')
+        self.assertEqual(result, 1300, f"Expected 1300, got {result}")
+
+    def test_calaries_complex_mix_name_unknown2(self):
+        result = comp_cal_counter('hamburger', 'veggie combo', 'Unknown')
+        self.assertEqual(result, 1300, f"Expected 1300, got {result}")
+
+    # Complex dict method
 
     def test_calaries_combo_complex_id(self):
-        pass
+        result = comp_cal_counter2('combo-1', 'combo-2')
+        self.assertEqual(result, 1770, f"Expected 1770, got {result}")
 
     def test_calaries_combo_complex_id_unknown(self):
-        pass
+        result = comp_cal_counter2('combo-1', 'combo-2', 'Unknown')
+        self.assertEqual(result, 1770, f"Expected 1770, got {result}")
 
     def test_calaries_combo_complex_name(self):
-        pass
+        result = comp_cal_counter2('cheesy combo', 'veggie combo')
+        self.assertEqual(result, 1770, f"Expected 1770, got {result}")
 
     def test_calaries_combo_complex_name_unknown(self):
-        pass
+        result = comp_cal_counter2('cheesy combo', 'veggie combo', 'Unknown')
+        self.assertEqual(result, 1770, f"Expected 1770, got {result}")
 
     def test_calaries_complex_mix_id(self):
-        pass
+        result = comp_cal_counter2('meal-1', 'combo-2')
+        self.assertEqual(result, 1300, f"Expected 1300, got {result}")
 
     def test_calaries_complex_mix_id_unknown(self):
-        pass
+        result = comp_cal_counter2('meal-1', 'combo-2', 'Unknown')
+        self.assertEqual(result, 1300, f"Expected 1300, got {result}")
 
     def test_calaries_complex_mix_name(self):
-        pass
+        result = comp_cal_counter2('hamburger', 'veggie combo')
+        self.assertEqual(result, 1300, f"Expected 1300, got {result}")
 
     def test_calaries_complex_mix_name_unknown(self):
-        pass
+        result = comp_cal_counter2('hamburger', 'veggie combo', 'Unknown')
+        self.assertEqual(result, 1300, f"Expected 1300, got {result}")
 
     def test_price_complex_id(self):
-        pass
+        result = price_counter('meal-1', 'meal-2', 'meal-3')
+        self.assertEqual(result, 18, f"Expected 18, got {result}")
 
     def test_price_complex_id_unknown(self):
-        pass
+        result = price_counter('meal-1', 'meal-2', 'meal-3', 'Unknown')
+        self.assertEqual(result, 18, f"Expected 18, got {result}")
 
     def test_price_complex_name(self):
-        pass
+        result = price_counter('hamburger','salad','iced tea')
+        self.assertEqual(result, 11, f"Expected 11, got {result}")
 
     def test_price_complex_name_unknown(self):
-        pass
+        result = price_counter('hamburger','salad','iced tea', 'Unknown')
+        self.assertEqual(result, 11, f"Expected 11, got {result}")
 
     def calories_counter_exception(self):
-        pass
-    
+        with self.assertRaises(BigMealException) as e:
+            result = calories_counter('Cheesy Combo', 'Cheesy Combo', 'Cheesy Combo')
+        self.assertEqual(
+            e.exception.message,
+            "Meal has 3210 calories, which is too much! ",
+            "wrong exception message"
+        )
     def comp_cal_counter_exception(self):
-        pass
+        with self.assertRaises(BigMealException) as e:
+            result = comp_cal_counter('combo-1', 'combo-1', 'combo-1')
+        self.assertEqual(
+            e.exception.message,
+            "Meal has 3210 calories, which is too much! ",
+            "wrong exception message"
+        )
 
     def comp_cal_counter2_exception(self):
-        pass
-
-
-
-
-class OrderMakingTestCase(TestCase):
-    def count_cals(self):
-        order = Order(['Hamburger'])
-        assert order.calories == 600
-
-
-# class CalCounterTestCase(TestCase):
-#     def individual_items(self):
-#         oneItem = ['Hamburger']
-#         assert calories_counter(oneItem) == '600'
+        with self.assertRaises(BigMealException) as e:
+            result = comp_cal_counter2('combo-1', 'combo-1', 'combo-1')
+        self.assertEqual(
+            e.exception.message,
+            "Meal has 3210 calories, which is too much! ",
+            "wrong exception message"
+        )
