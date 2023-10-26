@@ -12,7 +12,8 @@ def calories_counter(*args):
                 total_calories += calories[item]
             else:
                 for combo_item in combos[item.capitalize()]:
-                    total_calories += calories[combo_item]
+                    # total_calories += calories[combo_item]
+                    total_calories += calories_counter(combo_item) # Recursive function
 
         except KeyError:
             print(f"Item '{item}' not found")
@@ -25,27 +26,28 @@ def comp_cal_counter(*args):
     total_calories = 0
 
     for item in args:
-        try:
-            for meal in meals:
-                if item == meal['id']:
-                    total_calories += meal['calories']
-                elif item == meal['name']:
-                    total_calories += meal['calories']
+        for meal in meals:
+            if item == meal['id']:
+                total_calories += meal['calories']
+            elif item == meal['name']:
+                total_calories += meal['calories'] 
+                # Can't use try except here because it needs else statement
+                # If else statement is used to print out the error message, it will print out the error message for every item in the list  
 
-            for combo in combos2:
-                if item == combo['id']:
-                    for mealInCombo in combo['meals']:
-                        for meal in meals:
-                            if mealInCombo == meal['id']:
-                                total_calories += meal['calories']
-                elif item == combo['name']:
-                    for mealInCombo in combo['meals']:
-                        for meal in meals:
-                            if mealInCombo == meal['id']:
-                                total_calories += meal['calories']
-        except KeyError:
-            print(f"Item '{item}' not found")
-    return total_calories
+        for combo in combos2:
+            if item == combo['id']:
+                for mealInCombo in combo['meals']:
+                    for meal in meals:
+                        if mealInCombo == meal['id']:
+                            total_calories += meal['calories']
+            elif item == combo['name']:
+                for mealInCombo in combo['meals']:
+                    for meal in meals:
+                        if mealInCombo == meal['id']:
+                            total_calories += meal['calories']
+                            # Can't use try except here because it needs else statement
+                            # If else statement is used to print out the error message, it will print out the error message for every item in the list  
+        return total_calories
 
 
 def comp_cal_counter2(*list_of_items):
@@ -92,4 +94,4 @@ def price_counter(*list_of_items):
         except KeyError:
             print(f"Item '{item}' not found")
 
-    return print(f"Combo price: {combo_price} €, Total if you buy individualy: {sum_price} €, Your savings: {sum_price - combo_price} €")
+    return print(f"Combo price: {combo_price} €, Total if you buy individualy: {sum_price} €, You're savings: {sum_price - combo_price} €")
