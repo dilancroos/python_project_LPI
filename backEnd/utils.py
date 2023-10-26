@@ -48,6 +48,10 @@ def comp_cal_counter(*args):
                             total_calories += meal['calories']
                             # Can't use try except here because it needs else statement
                             # If else statement is used to print out the error message, it will print out the error message for every item in the list  
+        
+        if total_calories > 2000:
+            raise BigMealException(total_calories)
+        
         return total_calories
 
 
@@ -70,6 +74,9 @@ def comp_cal_counter2(*list_of_items):
         except KeyError:
             print(f"Item '{item}' not found")
 
+    if total_calories > 2000:
+        raise BigMealException(total_calories)
+    
     return total_calories
 
 
@@ -94,5 +101,5 @@ def price_counter(*list_of_items):
 
         except KeyError:
             print(f"Item '{item}' not found")
-
+    
     return print(f"Combo price: {combo_price} €, Total if you buy individualy: {sum_price} €, You're savings: {sum_price - combo_price} €")
