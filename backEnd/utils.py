@@ -50,7 +50,7 @@ def comp_cal_counter(*args):
                             # If else statement is used to print out the error message, it will print out the error message for every item in the list  
         
     if total_calories > 2000:
-            raise BigMealException(total_calories)
+        raise BigMealException(total_calories)
         
     return total_calories
 
