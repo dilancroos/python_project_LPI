@@ -129,4 +129,32 @@ class calories_counterTestCase(TestCase):
         result = price_counter('hamburger','salad','iced tea', 'Unknown')
         self.assertEqual(result, 11, f"Expected 11, got {result}")
 
+<<<<<<< HEAD
     
+=======
+    def calories_counter_exception(self):
+        with self.assertRaises(BigMealException) as e:
+            result = calories_counter('Cheesy Combo', 'Cheesy Combo', 'Cheesy Combo')
+        self.assertEqual(
+            e.exception.message,
+            "Meal has 3210 calories, which is too much! ",
+            "wrong exception message"
+        )
+    def comp_cal_counter_exception(self):
+        with self.assertRaises(BigMealException) as e:
+            result = comp_cal_counter('combo-1', 'combo-1', 'combo-1')
+        self.assertEqual(
+            e.exception.message,
+            "Meal has 3210 calories, which is too much! ",
+            "wrong exception message"
+        )
+
+    def comp_cal_counter2_exception(self):
+        with self.assertRaises(BigMealException) as e:
+            result = comp_cal_counter2('combo-1', 'combo-1', 'combo-1')
+        self.assertEqual(
+            e.exception.message,
+            "Meal has 3210 calories, which is too much! ",
+            "wrong exception message"
+        )
+>>>>>>> master
