@@ -1,9 +1,6 @@
 from unittest import TestCase
 
 from backEnd.utils import calories_counter, comp_cal_counter, comp_cal_counter2, price_counter
-from backEnd.exceptions import BigMealException
-
-# import backEnd.constants as constants
 
 import backEnd.classes as classes
 
@@ -132,6 +129,9 @@ class calories_counterTestCase(TestCase):
         result = price_counter('hamburger','salad','iced tea', 'Unknown')
         self.assertEqual(result, 11, f"Expected 11, got {result}")
 
+<<<<<<< HEAD
+    
+=======
     def calories_counter_exception(self):
         with self.assertRaises(BigMealException) as e:
             result = calories_counter('Cheesy Combo', 'Cheesy Combo', 'Cheesy Combo')
@@ -157,3 +157,4 @@ class calories_counterTestCase(TestCase):
             "Meal has 3210 calories, which is too much! ",
             "wrong exception message"
         )
+>>>>>>> master
