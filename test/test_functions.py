@@ -128,4 +128,3 @@ class calories_counterTestCase(TestCase):
     def test_price_complex_name_unknown(self):
         result = price_counter('hamburger','salad','iced tea', 'Unknown')
         self.assertEqual(result, 11, f"Expected 11, got {result}")
-        
