@@ -2,10 +2,10 @@ import json
 from .exceptions import BigMealException
 
 with open("data/meals.json") as file:
-	mealsJson = json.load(file)
+	mealsJson = json.load(file)['meals']
 
 with open("data/combos.json") as file:
-	combosJson = json.load(file)
+	combosJson = json.load(file)['combos']
 	
 meal_dist_by_id_json = {
     meal["id"]: meal 
