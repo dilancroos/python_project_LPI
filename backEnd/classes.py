@@ -40,6 +40,7 @@ class Order:
         items,
         date=None
     ):
+
         self.order_id = f"order-{Order.counter}"
         self.items = items
         self._calories = None

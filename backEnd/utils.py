@@ -21,20 +21,20 @@ def calories_counter(*args):
     
     return total_calories
 
-
+# Loop through method
 def comp_cal_counter(*args):
 
     total_calories = 0
 
     for item in args:
         for meal in meals:
+            # print(meal['id'])
             if item == meal['id']:
                 total_calories += meal['calories']
             elif item == meal['name']:
                 total_calories += meal['calories'] 
                 # Can't use try except here because it needs else statement
                 # If else statement is used to print out the error message, it will print out the error message for every item in the list  
-
         for combo in combos2:
             if item == combo['id']:
                 for mealInCombo in combo['meals']:
@@ -48,9 +48,13 @@ def comp_cal_counter(*args):
                             total_calories += meal['calories']
                             # Can't use try except here because it needs else statement
                             # If else statement is used to print out the error message, it will print out the error message for every item in the list  
-        return total_calories
+        
+    if total_calories > 2000:
+        raise BigMealException(total_calories)
+        
+    return total_calories
 
-
+# Dict method
 def comp_cal_counter2(*list_of_items):
 
     total_calories = 0
@@ -70,6 +74,9 @@ def comp_cal_counter2(*list_of_items):
         except KeyError:
             print(f"Item '{item}' not found")
 
+    if total_calories > 2000:
+        raise BigMealException(total_calories)
+    
     return total_calories
 
 
@@ -94,5 +101,15 @@ def price_counter(*list_of_items):
 
         except KeyError:
             print(f"Item '{item}' not found")
+    
+    # unit-test doesnt work with print
 
-    return print(f"Combo price: {combo_price} €, Total if you buy individualy: {sum_price} €, You're savings: {sum_price - combo_price} €")
+    # if combo_price == 0:
+    #     return print(f"Total price: {sum_price} €")
+    # else:
+    #     return print(f"Combo price: {combo_price} €, Total if you buy individualy: {sum_price} €, You're savings: {sum_price - combo_price} €")
+
+    if combo_price == 0:
+        return sum_price
+    else:
+        return combo_price
