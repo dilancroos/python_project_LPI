@@ -3,7 +3,7 @@ from unittest import TestCase
 from backEnd.utils import calories_counter, comp_cal_counter, comp_cal_counter2
 from backEnd.exceptions import BigMealException
 
-class exceptions_TestCase(TestCase):
+class exceptionsTestCase(TestCase):
     def calories_counter_exception(self):
         with self.assertRaises(BigMealException) as e:
             calories_counter('Cheesy Combo', 'Cheesy Combo', 'Cheesy Combo')
