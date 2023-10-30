@@ -40,12 +40,14 @@ class Order:
         items,
         date=None
     ):
-        self.items = items
-        self.date = date
         self.order_id = f"order-{Order.counter}"
-        Order.counter += 1
-        self.order_accepted = None
+        self.items = items
+        self._calories = None
+        self._price = None
+        self.order_accepted = False
         self.order_refused_reason = None
+        self.date = date
+        self.counter += 1
 
     @property
     def calories(self):
