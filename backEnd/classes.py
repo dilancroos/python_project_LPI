@@ -1,8 +1,3 @@
-import json
-
-with open("data/meals.json") as file:
-    meals = json.load(file)
-
 # Complete the `Order` class
 # in a dedicated file,
 # it must respect the
@@ -40,12 +35,15 @@ class Order:
         items,
         date=None
     ):
-        self.items = items
-        self.date = date
-        self.order_id = f"order-{Order.counter}"
+
         Order.counter += 1
-        self.order_accepted = None
+        self.order_id = f"order-{Order.counter}"
+        self.items = items
+        self._calories = None
+        self._price = None
+        self.order_accepted = False
         self.order_refused_reason = None
+        self.date = date
 
     @property
     def calories(self):
