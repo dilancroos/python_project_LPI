@@ -1,5 +1,5 @@
 from .constants import calories, combos, meals, combos2, meal_dist_by_id, meal_dist_by_name, combo_dist_by_id, combo_dist_by_name
-from .exceptions import BigMealException
+from .exceptions import InvalidMealException, BigMealException
 
 def calories_counter(*args):
 
@@ -14,7 +14,7 @@ def calories_counter(*args):
                     total_calories += calories[combo_item]
 
         except KeyError:
-            print(f"Item '{item}' not found")
+            raise InvalidMealException(item)
 
     if total_calories > 2000:
         raise BigMealException(total_calories)
@@ -72,7 +72,7 @@ def comp_cal_counter2(*list_of_items):
                     total_calories += meal_dist_by_id[combo_item]['calories']
 
         except KeyError:
-            print(f"Item '{item}' not found")
+            raise InvalidMealException(item)
 
     if total_calories > 2000:
         raise BigMealException(total_calories)
@@ -100,7 +100,7 @@ def price_counter(*list_of_items):
                     sum_price += meal_dist_by_id[combo_item]['price']
 
         except KeyError:
-            print(f"Item '{item}' not found")
+            raise InvalidMealException(item)
     
     # unit-test doesnt work with print
 

@@ -1,7 +1,8 @@
 from unittest import TestCase
+
 from backEnd.classes import Order
 
-class orderMakingTestCase(TestCase):
+class order_Making_TestCase(TestCase):
     def check_order_counter(self):
         current_counter = Order.counter
         order1 = Order([])
