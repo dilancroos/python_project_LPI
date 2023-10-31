@@ -44,6 +44,7 @@ def comp_cal_counter_json(*list_of_items):
                     total_calories += meal_dist_by_id_json[combo_item]['calories']
 
         except KeyError:
+            
             raise InvalidMealException(item)
 
     if total_calories > 2000:
@@ -72,6 +73,7 @@ def price_counter_json(*list_of_items):
                     sum_price += meal_dist_by_id_json[combo_item]['price']
 
         except KeyError:
+            
             raise InvalidMealException(item)
     
     # unit-test doesnt work with print

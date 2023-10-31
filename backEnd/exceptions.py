@@ -6,6 +6,6 @@ class BigMealException(Exception):
 
 class InvalidMealException(Exception):
     
-    def __init__(self, meal):
-        message = f"Meal {meal} is invalid!"  
+    def __init__(self, item):
+        message = f"Meal {item} is invalid!"  
         super().__init__(message)

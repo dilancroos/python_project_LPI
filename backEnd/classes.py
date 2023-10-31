@@ -1,6 +1,6 @@
 import json
 import datetime
-from backEnd.exceptions import InvalidMealException, BigMealException
+from backEnd.exceptions import BigMealException, InvalidMealException
 from backEnd.jsonUtils import comp_cal_counter_json, price_counter_json
 
 from .exceptions import BigMealException
@@ -74,15 +74,20 @@ class Order:
         self.items = items
         self._calories = None 
         self._price = None
+        self.order_accepted = False
+        self.order_refused_reason = None
+
         if date is None:
             self.date = datetime.date.today()
         else:
             self.date = datetime.datetime.strptime(date, "%d-%b-%Y")
         try:
-            self.calories 
-        except (InvalidMealException, BigMealException) as e: 
+            self.calories
+            self.price
+        except (BigMealException, InvalidMealException) as e: 
             self._calories = 0
             self._price = 0
+            self.order_refused_reason = str(e)
         else:
             self.order_accepted = True
             self.order_refused_reason = None
@@ -99,27 +104,3 @@ class Order:
         if self._price is None:
             self._price = price_counter_json(*self.items)
         return self._price
-
-    def __repr__(self):
-        return f"Order(items={self.items}, date={self.date})"
-
-    def __str__(self):
-        return f"Order {self.order_id} made on {self.date} with items {self.items}."
-
-    def accept_order(self):
-        if self.calories > 2000:
-            self.order_accepted = False
-            self.order_refused_reason = "Too many calories."
-        else:
-            self.order_accepted = True
-            self.order_refused_reason = None
-
-    def print_order(self):
-        print(
-            f"Order {self.order_id} made on {self.date} with items {self.items}.")
-        print(f"Total calories: {self.calories}")
-        print(f"Total price: {self.price}")
-        if self.order_accepted:
-            print("Order accepted.")
-        else:
-            print(f"Order refused: {self.order_refused_reason}")
