@@ -87,6 +87,7 @@ class Order:
             self.order_accepted = True
             self.order_refused_reason = None
 
+
     @property
     def calories(self):
         if self._calories is None:

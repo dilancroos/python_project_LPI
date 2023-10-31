@@ -87,7 +87,6 @@ class json_fileTestCase(TestCase):
     def test_json_calaries_complex_mix_name(self):
         result = comp_cal_counter_json('hamburger', 'veggie combo')
         self.assertEqual(result, 1300, f"Expected 1300, got {result}")
-    
 
     def test_json_price_complex_id(self):
         result = price_counter_json('meal-1', 'meal-2', 'meal-3')
