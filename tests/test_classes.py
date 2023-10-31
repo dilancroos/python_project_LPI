@@ -4,7 +4,7 @@ from backEnd.classes import Order
 
 class order_Making_TestCase(TestCase):
 
-    def check_order_counter(self):
+    def test_check_order_counter(self):
         current_counter = Order.counter
         order1 = Order([])
         self.assertEqual(order1.order_id, f"order-{current_counter}")

@@ -61,16 +61,12 @@ class Order:
         calories (int): The total calories for the order.
         price (int): The total price for the order.
     """
-    counter = 0
+    counter = 1
 
-    def __init__(
-        self,
-        items,
-        date=None
-    ):
+    def __init__(self, items, date=None):
 
-        Order.counter += 1
         self.order_id = f"order-{Order.counter}"
+        Order.counter += 1
         self.items = items
         self._calories = None 
         self._price = None
