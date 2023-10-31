@@ -1,3 +1,33 @@
+import json
+
+from .exceptions import BigMealException
+
+with open("data/meals.json") as file:
+	mealsJson = json.load(file)['meals']
+
+with open("data/combos.json") as file:
+	combosJson = json.load(file)['combos']
+	
+meal_dist_by_id_json = {
+    meal["id"]: meal 
+    for meal in mealsJson
+}
+
+meal_dist_by_name_json = {
+    meal["name"]: meal
+    for meal in mealsJson
+}
+
+combo_dist_by_id_json = {
+    combo["id"]: combo
+    for combo in combosJson
+}
+
+combo_dist_by_name_json = {
+    combo["name"]: combo
+    for combo in combosJson
+}
+
 # Complete the `Order` class
 # in a dedicated file,
 # it must respect the
