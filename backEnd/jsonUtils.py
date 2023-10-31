@@ -1,5 +1,5 @@
 import json
-from .exceptions import BigMealException
+from .exceptions import InvalidMealException, BigMealException
 
 with open("data/meals.json") as file:
 	mealsJson = json.load(file)['meals']
@@ -44,7 +44,7 @@ def comp_cal_counter_json(*list_of_items):
                     total_calories += meal_dist_by_id_json[combo_item]['calories']
 
         except KeyError:
-            print(f"Item '{item}' not found")
+            raise InvalidMealException(item)
 
     if total_calories > 2000:
         raise BigMealException(total_calories)
@@ -72,7 +72,7 @@ def price_counter_json(*list_of_items):
                     sum_price += meal_dist_by_id_json[combo_item]['price']
 
         except KeyError:
-            print(f"Item '{item}' not found")
+            raise InvalidMealException(item)
     
     # unit-test doesnt work with print
 

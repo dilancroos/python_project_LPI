@@ -1,3 +1,36 @@
+import json
+import datetime
+from backEnd.exceptions import InvalidMealException, BigMealException
+from backEnd.jsonUtils import comp_cal_counter_json, price_counter_json
+
+from .exceptions import BigMealException
+
+with open("data/meals.json") as file:
+	mealsJson = json.load(file)['meals']
+
+with open("data/combos.json") as file:
+	combosJson = json.load(file)['combos']
+	
+meal_dist_by_id_json = {
+    meal["id"]: meal 
+    for meal in mealsJson
+}
+
+meal_dist_by_name_json = {
+    meal["name"]: meal
+    for meal in mealsJson
+}
+
+combo_dist_by_id_json = {
+    combo["id"]: combo
+    for combo in combosJson
+}
+
+combo_dist_by_name_json = {
+    combo["name"]: combo
+    for combo in combosJson
+}
+
 # Complete the `Order` class
 # in a dedicated file,
 # it must respect the
@@ -39,40 +72,33 @@ class Order:
         Order.counter += 1
         self.order_id = f"order-{Order.counter}"
         self.items = items
-        self._calories = None
+        self._calories = None 
         self._price = None
-        self.order_accepted = False
-        self.order_refused_reason = None
-        self.date = date
+        if date is None:
+            self.date = datetime.date.today()
+        else:
+            self.date = datetime.datetime.strptime(date, "%d-%b-%Y")
+        try:
+            self.calories 
+        except (InvalidMealException, BigMealException) as e: 
+            self._calories = 0
+            self._price = 0
+        else:
+            self.order_accepted = True
+            self.order_refused_reason = None
+
 
     @property
     def calories(self):
-        total_calories = 0
-        for item in self.items:
-            for meal in meals:
-                try:
-                    if item == meal['id']:
-                        total_calories += meal['calories']
-                    elif item == meal['name']:
-                        total_calories += meal['calories']
-
-                    return total_calories
-                except KeyError:
-                    print(f"Item '{item}' not found")
+        if self._calories is None:
+            self._calories = comp_cal_counter_json(*self.items)
+        return self._calories
 
     @property
     def price(self):
-        total_price = 0
-        for item in self.items:
-            try:
-                for meal in meals:
-                    if item == meal['id']:
-                        total_price += meal['price']
-                    elif item == meal['name']:
-                        total_price += meal['price']
-                return total_price
-            except KeyError:
-                print(f"Item '{item}' not found")
+        if self._price is None:
+            self._price = price_counter_json(*self.items)
+        return self._price
 
     def __repr__(self):
         return f"Order(items={self.items}, date={self.date})"
