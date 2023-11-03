@@ -1,14 +1,14 @@
 import json
-from .exceptions import InvalidMealException, BigMealException
+from backEnd.exceptions import InvalidMealException, BigMealException
 
 with open("data/meals.json") as file:
-	mealsJson = json.load(file)['meals']
+    mealsJson = json.load(file)['meals']
 
 with open("data/combos.json") as file:
-	combosJson = json.load(file)['combos']
-	
+    combosJson = json.load(file)['combos']
+
 meal_dist_by_id_json = {
-    meal["id"]: meal 
+    meal["id"]: meal
     for meal in mealsJson
 }
 
@@ -27,6 +27,7 @@ combo_dist_by_name_json = {
     for combo in combosJson
 }
 
+
 def comp_cal_counter_json(*list_of_items):
 
     total_calories = 0
@@ -44,12 +45,12 @@ def comp_cal_counter_json(*list_of_items):
                     total_calories += meal_dist_by_id_json[combo_item]['calories']
 
         except KeyError:
-            
+
             raise InvalidMealException(item)
 
     if total_calories > 2000:
         raise BigMealException(total_calories)
-    
+
     return total_calories
 
 
@@ -73,9 +74,9 @@ def price_counter_json(*list_of_items):
                     sum_price += meal_dist_by_id_json[combo_item]['price']
 
         except KeyError:
-            
+
             raise InvalidMealException(item)
-    
+
     # unit-test doesnt work with print
 
     # if combo_price == 0:

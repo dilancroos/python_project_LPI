@@ -6,13 +6,13 @@ from backEnd.jsonUtils import comp_cal_counter_json, price_counter_json
 from .exceptions import BigMealException
 
 with open("data/meals.json") as file:
-	mealsJson = json.load(file)['meals']
+    mealsJson = json.load(file)['meals']
 
 with open("data/combos.json") as file:
-	combosJson = json.load(file)['combos']
-	
+    combosJson = json.load(file)['combos']
+
 meal_dist_by_id_json = {
-    meal["id"]: meal 
+    meal["id"]: meal
     for meal in mealsJson
 }
 
@@ -38,6 +38,7 @@ combo_dist_by_name_json = {
 # docstring.
 
 # An order can be refused if the total is more than 2000 calories or if an unknown item is ordered.
+
 
 class Order:
     """
@@ -68,7 +69,7 @@ class Order:
         self.order_id = f"order-{Order.counter}"
         Order.counter += 1
         self.items = items
-        self._calories = None 
+        self._calories = None
         self._price = None
         self.order_accepted = False
         self.order_refused_reason = None
@@ -80,14 +81,13 @@ class Order:
         try:
             self.calories
             self.price
-        except (BigMealException, InvalidMealException) as e: 
+        except (BigMealException, InvalidMealException) as e:
             self._calories = 0
             self._price = 0
             self.order_refused_reason = str(e)
         else:
             self.order_accepted = True
             self.order_refused_reason = None
-
 
     @property
     def calories(self):

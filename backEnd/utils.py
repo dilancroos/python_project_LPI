@@ -1,5 +1,6 @@
-from .constants import calories, combos, meals, combos2, meal_dist_by_id, meal_dist_by_name, combo_dist_by_id, combo_dist_by_name
-from .exceptions import InvalidMealException, BigMealException
+from backEnd.constants import calories, combos, meals, combos2, meal_dist_by_id, meal_dist_by_name, combo_dist_by_id, combo_dist_by_name
+from backEnd.exceptions import InvalidMealException, BigMealException
+
 
 def calories_counter(*args):
 
@@ -18,10 +19,12 @@ def calories_counter(*args):
 
     if total_calories > 2000:
         raise BigMealException(total_calories)
-    
+
     return total_calories
 
 # Loop through method
+
+
 def comp_cal_counter(*args):
 
     total_calories = 0
@@ -32,9 +35,9 @@ def comp_cal_counter(*args):
             if item == meal['id']:
                 total_calories += meal['calories']
             elif item == meal['name']:
-                total_calories += meal['calories'] 
+                total_calories += meal['calories']
                 # Can't use try except here because it needs else statement
-                # If else statement is used to print out the error message, it will print out the error message for every item in the list  
+                # If else statement is used to print out the error message, it will print out the error message for every item in the list
         for combo in combos2:
             if item == combo['id']:
                 for mealInCombo in combo['meals']:
@@ -47,14 +50,16 @@ def comp_cal_counter(*args):
                         if mealInCombo == meal['id']:
                             total_calories += meal['calories']
                             # Can't use try except here because it needs else statement
-                            # If else statement is used to print out the error message, it will print out the error message for every item in the list  
-        
+                            # If else statement is used to print out the error message, it will print out the error message for every item in the list
+
     if total_calories > 2000:
         raise BigMealException(total_calories)
-        
+
     return total_calories
 
 # Dict method
+
+
 def comp_cal_counter2(*list_of_items):
 
     total_calories = 0
@@ -76,7 +81,7 @@ def comp_cal_counter2(*list_of_items):
 
     if total_calories > 2000:
         raise BigMealException(total_calories)
-    
+
     return total_calories
 
 
@@ -101,7 +106,7 @@ def price_counter(*list_of_items):
 
         except KeyError:
             raise InvalidMealException(item)
-    
+
     # unit-test doesnt work with print
 
     # if combo_price == 0:
