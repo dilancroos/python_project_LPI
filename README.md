@@ -8,9 +8,9 @@
 # Python Assessment
 
 Create a Python program in steps to fulfil the assigned tasks in the assessment.  
-[Explore the docs](https://github.com/dilancroos/python_final).  
-[Report Bug](https://github.com/dilancroos/python_final/issues).  
-[Request Feature](https://github.com/dilancroos/python_final/issues).
+[Explore the docs](https://github.com/dilancroos/python_project_LPI).  
+[Report Bug](https://github.com/dilancroos/python_project_LPI/issues).  
+[Request Feature](https://github.com/dilancroos/python_project_LPI/issues).
 
 ## TABLE OF CONTENTS
 
@@ -49,13 +49,13 @@ Python 3.11.6^
 1. Clone the repo
 
    ```sh
-   $ git@github.com:dilancroos/python_final.git
+   $ git@github.com:dilancroos/python_project_LPI.git
    ```
 
 2. Change to the working directory
 
    ```sh
-   $ cd python_final
+   $ cd python_project_LPI
    ```
 
 3. Install PIP packages
@@ -118,7 +118,7 @@ Don't forget to give the project a star! Thanks again!
 ## Contact
 
 Anton Dilan Croos Warnakulasuriya - <antondilan.crooswarnakulasuriya@cri-paris.org>  
-Project Link: [https://github.com/dilancroos/python_final](https://github.com/dilancroos/python_final)
+Project Link: [https://github.com/dilancroos/python_project_LPI](https://github.com/dilancroos/python_project_LPI)
 
 [back to top](#readme-top)
 
@@ -131,16 +131,16 @@ Project Link: [https://github.com/dilancroos/python_final](https://github.com/di
 
 [back to top](#readme-top)
 
-[contributors-shield]: https://img.shields.io/github/contributors/dilancroos/python_final.svg?style=for-the-badge
-[contributors-url]: https://github.com/dilancroos/python_final/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/dilancroos/python_final.svg?style=for-the-badge
-[forks-url]: https://github.com/dilancroos/python_final/network/members
-[stars-shield]: https://img.shields.io/github/stars/dilancroos/python_final.svg?style=for-the-badge
-[stars-url]: https://github.com/dilancroos/python_final/stargazers
-[issues-shield]: https://img.shields.io/github/issues/dilancroos/python_final.svg?style=for-the-badge
-[issues-url]: https://github.com/dilancroos/python_final/issues
-[license-shield]: https://img.shields.io/github/license/dilancroos/python_final.svg?style=for-the-badge
-[license-url]: https://github.com/dilancroos/python_final/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/dilancroos/python_project_LPI.svg?style=for-the-badge
+[contributors-url]: https://github.com/dilancroos/python_project_LPI/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/dilancroos/python_project_LPI.svg?style=for-the-badge
+[forks-url]: https://github.com/dilancroos/python_project_LPI/network/members
+[stars-shield]: https://img.shields.io/github/stars/dilancroos/python_project_LPI.svg?style=for-the-badge
+[stars-url]: https://github.com/dilancroos/python_project_LPI/stargazers
+[issues-shield]: https://img.shields.io/github/issues/dilancroos/python_project_LPI.svg?style=for-the-badge
+[issues-url]: https://github.com/dilancroos/python_project_LPI/issues
+[license-shield]: https://img.shields.io/github/license/dilancroos/python_project_LPI.svg?style=for-the-badge
+[license-url]: https://github.com/dilancroos/python_project_LPI/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/antondilancrooswarnakulasuriya
 [product-screenshot]: images/screenshot.png
